@@ -12,7 +12,9 @@ audo apt install build-essential libusb-dev libftdi-dev libgpiod-dev git cmake
 - go into work directory
 git clone https://github.com/roberto314/xc3sprog-libgpio
 mkdir xc3sprog-libgpio/build
-cd xc3sprog-libgpio/build
+cd xc3sprog-libgpio
+- change gpioA20.cpp to the Pin Numbers you need!
+cd build
 cmake .. _DUSE_WIRINGPI=OFF
 make 
 
