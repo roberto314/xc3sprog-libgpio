@@ -1,6 +1,10 @@
 
 # Version with libgpiod for recent kernels (>4.8).
 
+Tested with Olimexuino A20,
+  Raspberry Pi1,
+  Pine64 (doesn't work)
+
 # Build & Installation
 ```
 # Prerequisites:

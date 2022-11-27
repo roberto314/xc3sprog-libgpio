@@ -1,0 +1,58 @@
+Added option for Olimex A20 (Olimexino) Linux board.
+Uses Kernel 5.10.105-olimex with character io (libgpiod).
+Use cable: gpiod_A20
+This should work on other "Generic" boards as well.
+
+Test with Pine 64:
+Prerequisites:
+sudo apt update && upgrade
+sudo apt install (build-essential) libusb-dev libftdi-dev libgpiod-dev (git) cmake gpiod
+
+compile with:
+
+mkdir xc3sprog/build
+cd xc3sprog/build
+cmake .. -DUSE_WIRINGPI=OFF
+make
+sudo make install
+
+***********************************************************
+Raspberry Pi 1 WORKING
+**********************************************************
+Pins used on RPi 1: (look in gpiodA20.cpp)
+all on 26-pin connector
+25 - Pin 22 - TDO
+24 - Pin 18 - TDI
+23 - Pin 16 - TCK
+18 - Pin 12 - TMS
+
+***********************************************************
+PINE64 NOT WORKING
+**********************************************************
+Pins used on Pine64: (look in gpiodA20.cpp)
+all on Pi-2 40-pin connector
+75 - PC4 - Pin 32 - TDO
+74 - PC6 - Pin 36 - TDI
+70 - PC10 - Pin 38 - TCK
+68 - PC11 - Pin 40 - TMS
+
+***********************************************************
+OLIMEXINO A20 WORKING
+**********************************************************
+Pins used on Olimexino: (look in gpiodA20.cpp)
+all on GPIO-3 40-pin connector
+248 - PH24 - Pin 34 - TDO
+249 - PH25 - Pin 36 - TDI
+250 - PH26 - Pin 38 - TCK
+251 - PH27 - Pin 40 - TMS
+They are on the down right side
+near the Power Connector.
+
+Pin Numbering in Linux Kernel 5 is:
+GPIO Letter (A==0) * 32 + GPIO Number
+so PH24 is
+7*32+24 =248
+
+Run Program with:
+sudo xc3sprog -c gpiod_A20 -j 
+to view JTAG-Chain
