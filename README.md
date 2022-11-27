@@ -1,19 +1,23 @@
 
 # Version with libgpiod for recent kernels (>4.8).
 
-# Installation
+# Build & Installation
 ```
-# Add repo and key
-curl https://apt.matrix.one/doc/apt-key.gpg | sudo apt-key add -
-echo "deb https://apt.matrix.one/raspbian $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/matrixlabs.list
+# Prerequisites:
+sudo apt update
+sudo apt upgrade
+audo apt install build-essential libusb-dev libftdi-dev libgpiod-dev git cmake
 
-# Update packages and install
-sudo apt-get update
-sudo apt-get upgrade
+# Clone from Github
+- go into work directory
+git clone https://github.com/roberto314/xc3sprog-libgpio
+mkdir xc3sprog-libgpio/build
+cd xc3sprog-libgpio/build
+cmake .. _DUSE_WIRINGPI=OFF
+make 
 
-#Installation
-sudo apt install matrixio-xc3sprog
-
+# Optional
+sudo make install
 ```
 
 # Spartan3, XCF and CPLD JTAG programmer and other utilities
